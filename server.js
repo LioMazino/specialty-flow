@@ -4,7 +4,7 @@ const express = require('express');
 const { syncDB } = require('./config/db');
 require('./models/Cafe'); 
 
-const { obtenerCafes, crearCafe } = require('./controllers/cafeController');
+const { obtenerCafes, crearCafe, eliminarCafe } = require('./controllers/cafeController');
 
 // 2. CONFIGURACIÓN DEL SERVIDOR
 const app = express();
@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', obtenerCafes);
 app.post('/cafes', crearCafe);
+app.post('/cafes/borrar/:id', eliminarCafe);
 
 // 4. INICIO DEL SERVIDOR
 
